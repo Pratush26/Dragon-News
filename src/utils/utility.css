@@ -1,0 +1,10 @@
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #272626 inset;
+  -webkit-text-fill-color: white;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+nav a.active {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
