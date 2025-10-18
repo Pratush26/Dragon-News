@@ -11,11 +11,15 @@ export const router = createBrowserRouter([
     hydrateFallbackElement: <Loader />,
     Component: App,
     children: [
-        {
-            index: true,
-            loader: () => axios("/news.json"),
-            Component: HomeLayout
-        }
+      {
+        index: true,
+        loader: async () => {
+          const newsRes = await axios("/news.json");
+          const categoryRes = await axios("/categories.json");
+          return { news: newsRes.data, category: categoryRes.data };
+        },
+        Component: HomeLayout
+      }
     ]
   },
 ]);
