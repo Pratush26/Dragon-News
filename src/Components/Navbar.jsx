@@ -12,27 +12,30 @@ export default function NavBar() {
     //     })
     // }
     // console.log(msg)
+    const user = null;
     return (
-        <nav className="flex items-center justify-center gap-5 p-4 w-11/12 mx-auto">
-            <NavLink to='/'>Home</NavLink>
-            <NavLink to='/about'>About</NavLink>
-            {/* {
-                loading ?
-                    <section className="flex items-center justify-center gap-2">
-                        <div className="h-1 w-1 animate-ping bg-white rounded-full" style={{ animationDelay: "0s" }}></div>
-                        <div className="h-1 w-1 animate-ping bg-white rounded-full" style={{ animationDelay: "0.2s" }}></div>
-                        <div className="h-1 w-1 animate-ping bg-white rounded-full" style={{ animationDelay: "0.4s" }}></div>
-                    </section>
-                    :
+        <nav className="grid grid-cols-5 justify-items-end-safe items-center gap-5 py-4 w-11/12 mx-auto">
+            <div className="flex items-center justify-center gap-3 col-span-3">
+                <NavLink to='/'>Home</NavLink>
+                <NavLink to='/about'>About</NavLink>
+                {
                     user ?
-                        <button onClick={handleLogout} className="cursor-pointer px-3 py-2 hover:bg-gray-900 rounded-sm">LogOut</button>
+                    <NavLink to='/dashboard'>Career</NavLink>
+                    :
+                    <NavLink to='/career'>Career</NavLink>
+                }
+            </div>
+            <div className="flex items-center justify-center gap-3 col-span-2">
+                {
+                    user ?
+                        <button className='bg-gray-900 font-semibold text-white px-6 py-1 rounded-sm' >Log out</button>
                         :
-                        <>
-                            <NavLink to='/register'>Register</NavLink>
-                            <NavLink to='/login'>Login</NavLink>
-                        </>
-            } */}
-            <NavLink to='/dashboard'>Career</NavLink>
+                        <span className="flex items-center justify-center gap-2">
+                            <img src="" alt="user image" />
+                            <NavLink to='/career/login' className='bg-gray-900 font-semibold text-white px-6 py-1 rounded-sm' >Login</NavLink>
+                        </span>
+                }
+            </div>
         </nav>
     )
 }
