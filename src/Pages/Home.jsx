@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import { useLoaderData, useParams } from "react-router"
+import { FaEye, FaStar } from "react-icons/fa"
+import { Link, useLoaderData, useParams } from "react-router"
 
 export default function HomePage() {
     const { data } = useLoaderData()
@@ -8,7 +9,7 @@ export default function HomePage() {
     const [fiteredData, setFiteredData] = useState(dataSet)
     useEffect(() => {
         setDataSet(data)
-    }, [])
+    }, [data])
     useEffect(() => {
         if (category === '0' || category == null) setFiteredData(dataSet)
         else if (category === '1') setFiteredData(dataSet.filter(e => e.others.is_today_pick))
@@ -27,11 +28,24 @@ export default function HomePage() {
                                 <img src={e.author.img} alt={e.author.name} className="rounded-full h-7 aspect-square" />
                                 <p>{e.author.name}</p>
                             </span>
-                            <p className="text-gray-400 text-sm">{e.author.published_date}</p>
+                            <p className="text-gray-400 text-sm">{new Date(e.author.published_date).toLocaleString()}</p>
                         </div>
-                        <img src={e.thumbnail_url} alt={e.title} className="w-full aspect-video rounded-lg" />
-                        <div className="flex items-center gap-3 text-xs font-medium text-gray-600">
-                            {e.tags.map((t, i) => (<p key={i} className="px-3 py-1 bg-gray-100 rounded-xl">{t}</p>))}
+                        {
+                            e.thumbnail_url ?
+                                <img src={e.thumbnail_url} alt={e.title} className="w-full aspect-video rounded-lg" />
+                                :
+                                <div className="w-full aspect-video bg-gray-100"></div>
+                        }
+                        <p className="line-clamp-3 text-gray-500">{e.details}</p>
+                        <Link state={e} to='/details' className="text-amber-500 font-semibold hover:underline">Read more...</Link>
+                        <hr className="border-gray-300 mt-3" />
+                        <div className="flex items-center justify-between">
+                            <span className="flex gap-2 text-amber-300">
+                                {Array.from({ length: e.rating?.number }).map((_, i) => (
+                                    <FaStar key={i} />
+                                ))}
+                            </span>
+                            <span className="flex items-center gap-2 text-gray-600"><FaEye /> <p className="text-sm">{e.total_view}</p></span>
                         </div>
                     </section>
                 ))

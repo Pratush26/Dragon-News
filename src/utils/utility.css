@@ -1,3 +1,18 @@
+input{
+  background-color: whitesmoke;
+  padding: 10px 20px;
+  font-size: .9rem;
+  width: 94%;
+  margin: auto;
+}
+
+label{
+  font-weight: 600;
+  padding-top: 18px;
+  padding-left: 4px;
+  width: 94%;
+  margin: auto;
+}
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px #272626 inset;
   -webkit-text-fill-color: white;

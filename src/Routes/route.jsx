@@ -9,11 +9,14 @@ import CareerLayout from "../Layout/CareerLayout";
 import DetailsLayout from "../Layout/DetailsLayout";
 import AboutPage from "../Pages/About";
 import HomePage from "../Pages/Home";
+import Dashboard from "../Pages/Dashboard";
+import NotFoundPage from "../Pages/NotFound";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     hydrateFallbackElement: <Loader />,
+    errorElement: <NotFoundPage />,
     Component: App,
     children: [
       {
@@ -38,7 +41,7 @@ export const router = createBrowserRouter([
         ]
       },
       {
-        path: '/details/:id',
+        path: '/details',
         Component: DetailsLayout,
       },
       {
@@ -52,6 +55,10 @@ export const router = createBrowserRouter([
           {
             path: '/career/login',
             Component: Login
+          },
+          {
+            path: '/career/dashboard',
+            Component: Dashboard
           }
         ]
       },
@@ -59,6 +66,10 @@ export const router = createBrowserRouter([
         path: '/about',
         Component: AboutPage
       },
+      {
+        path: "/*",
+        Component: NotFoundPage
+      }
     ]
   },
 ]);

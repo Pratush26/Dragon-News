@@ -1,7 +1,63 @@
+import { Link, Navigate } from 'react-router'
+import '../utils/utility.css'
+import { useContext, useState } from 'react'
+import { AuthContext } from '../Context/AuthContext'
+import { FaEye, FaEyeSlash } from 'react-icons/fa'
+
 export default function Register() {
+    const [msg, setMsg] = useState({})
+    const [showPassword, setShowPassword] = useState(false)
+    const { user, createUser, updateUser, googleSignIn, githubSignIn } = useContext(AuthContext)
+
+    if (user) return <Navigate to="/" ></Navigate>
+    const handleRegister = (e) => {
+        e.preventDefault();
+        createUser(e.target.email.value, e.target.password.value).then(() => {
+            updateUser(e.target.name.value, e.target.photoUrl.value).then(() => {
+                setMsg({ type: "success", message: "Successfully Registered User" })
+                e.target.reset()
+            }).catch((c) => {
+                setMsg({ type: "err", message: c.message })
+            })
+        }).catch((c) => {
+            setMsg({ type: "err", message: c.message })
+        })
+
+    }
+    const googleLogin = () => {
+        googleSignIn().then(() => setMsg({ type: "success", message: "Successfully Signed in" })).catch((c) => {
+            setMsg({ type: "err", message: c.message })
+        })
+    }
+    const githubLogin = () => {
+        githubSignIn().then(() => setMsg({ type: "success", message: "Successfully Signed in" })).catch((c) => {
+            setMsg({ type: "err", message: c.message })
+        })
+    }
     return (
-        <form action="">
-            
+        <form onSubmit={handleRegister} className="bg-white w-1/2 mx-auto p-4 m-8 shadow-lg/50 shadow-gray-400">
+            <h1 className="flex items-center justify-center text-center text-2xl font-semibold min-h-[20vh]" >Register your account</h1>
+            <hr className="border-gray-300 mx-5" />
+            {msg && <p className={`${msg.type === 'err' ? 'text-red-600' : 'text-green-600'}`}>{msg.message}</p>}
+            <fieldset className='flex flex-col gap-1'>
+                <label htmlFor="name">Name:</label>
+                <input type="text" name="name" id="name" placeholder="Enter your name" />
+                <label htmlFor="photoUrl">Photo URL:</label>
+                <input type="url" name="photoUrl" id="photoUrl" placeholder="Enter your photo url" />
+                <label htmlFor="email">Email:</label>
+                <input type="email" required='true' name="email" id="email" placeholder="Enter your email" />
+                <label htmlFor="password">Password:</label>
+                <div className='relative flex items-center justify-center'>
+                    <input type={`${showPassword ? 'text' : 'password'}`} name="password" id="password" placeholder='Enter your password' />
+                    <button type='button' onClick={() => setShowPassword(!showPassword)} className='absolute p-1 right-7 top-1/2 -translate-y-1/2 cursor-pointer'>{showPassword ? <FaEyeSlash /> : <FaEye />}</button>
+                </div>
+                <p className="m-2 text-center text-sm">Already have an account? <Link to="/career/login" className="text-blue-500 hover:text-blue-600 font-medium">Login</Link></p>
+                <button className='bg-black text-white font-semibold w-fit mx-auto px-4 py-2 rounded-md m-2 cursor-pointer'>Register</button>
+            </fieldset>
+            <div className="grid grid-flow-row gap-2">
+                <button onClick={googleLogin} type="button" className="flex items-center justify-center gap-3 rounded-sm border px-4 py-2 text-sm font-medium hover:text-sky-800 w-fit mx-auto cursor-pointer"><FcGoogle /> Login with Google</button>
+                <button onClick={githubLogin} type="button" className="flex items-center justify-center gap-3 rounded-sm border px-4 py-2 text-sm font-medium hover:text-sky-800 w-fit mx-auto cursor-pointer"><FaGithub /> Login with Github</button>
+            </div>
         </form>
     )
 }
