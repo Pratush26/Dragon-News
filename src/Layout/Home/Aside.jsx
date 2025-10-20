@@ -38,9 +38,9 @@ export default function Aside() {
                 }
                 <h4 className="text-lg font-semibold" >Find Us On</h4>
                 <div>
-                    <a href="/" target="_blank" className="flex items-center justify-start gap-4 px-6 py-3 border border-gray-300 border-b-0 text-sm font-medium bg-gray-50 hover:bg-gray-200"><FaFacebook /> Facebook</a>
-                    <a href="/" target="_blank" className="flex items-center justify-start gap-4 px-6 py-3 border border-gray-300 text-sm font-medium bg-gray-50 hover:bg-gray-200"><FaXTwitter /> Twitter</a>
-                    <a href="/" target="_blank" className="flex items-center justify-start gap-4 px-6 py-3 border border-gray-300 border-t-0 text-sm font-medium bg-gray-50 hover:bg-gray-200"><FaInstagram /> Instragram</a>
+                    <a href="https://www.facebook.com" target="_blank" className="flex items-center justify-start gap-4 px-6 py-3 border border-gray-300 border-b-0 text-sm font-medium bg-gray-50 hover:bg-gray-200"><FaFacebook /> Facebook</a>
+                    <a href="https://twitter.com" target="_blank" className="flex items-center justify-start gap-4 px-6 py-3 border border-gray-300 text-sm font-medium bg-gray-50 hover:bg-gray-200"><FaXTwitter /> Twitter</a>
+                    <a href="https://www.instagram.com" target="_blank" className="flex items-center justify-start gap-4 px-6 py-3 border border-gray-300 border-t-0 text-sm font-medium bg-gray-50 hover:bg-gray-200"><FaInstagram /> Instragram</a>
                 </div>
             </section>
             <section className="space-y-4 bg-gray-100 p-4">
