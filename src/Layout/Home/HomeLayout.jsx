@@ -4,7 +4,7 @@ import NavBar from "../../Components/Navbar";
 import { Outlet, useLoaderData } from "react-router";
 import CategoryBar from "./CategoryBar";
 import Aside from "./Aside";
-import { NavLink } from "react-router";
+import { Link } from "react-router";
 
 export default function HomeLayout() {
     const { news } = useLoaderData()
@@ -15,7 +15,7 @@ export default function HomeLayout() {
                 <div className="px-4 py-2 bg-pink-700 text-white font-semibold">Latest</div>
                 <Marquee autoFill="true" pauseOnHover="true">
                     {news.filter(e => e.others.is_today_pick).map(e => (
-                        <NavLink to={'/'} key={e.id} className="mx-6 text-gray-800">{e.title}</NavLink>
+                        <Link state={e} to='/details' key={e.id} className="mx-6 text-gray-800">{e.title}</Link>
                     ))}
                 </Marquee>
             </section>

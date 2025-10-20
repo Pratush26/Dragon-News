@@ -45,9 +45,9 @@ export default function Login() {
                 <p className="m-2 text-center text-sm">Don't have an account? <Link to="/career" className="text-blue-500 hover:text-blue-600 font-medium">Register</Link></p>
                 <button className='bg-black text-white font-semibold w-fit mx-auto px-4 py-2 rounded-md m-2 cursor-pointer'>Login</button>
             </fieldset>
-            <div className="grid grid-flow-row gap-2">
-                <button onClick={googleLogin} type="button" className="flex items-center justify-center gap-3 rounded-sm border px-4 py-2 text-sm font-medium hover:text-sky-800 w-fit mx-auto cursor-pointer"><FcGoogle /> Login with Google</button>
-                <button onClick={githubLogin} type="button" className="flex items-center justify-center gap-3 rounded-sm border px-4 py-2 text-sm font-medium hover:text-sky-800 w-fit mx-auto cursor-pointer"><FaGithub /> Login with Github</button>
+            <div className="flex flex-wrap justify-center gap-2">
+                <button onClick={googleLogin} type="button" className="flex items-center justify-center gap-3 rounded-sm border px-4 py-2 text-sm font-medium hover:text-sky-800 w-fit cursor-pointer"><FcGoogle /> Login with Google</button>
+                <button onClick={githubLogin} type="button" className="flex items-center justify-center gap-3 rounded-sm border px-4 py-2 text-sm font-medium hover:text-sky-800 w-fit cursor-pointer"><FaGithub /> Login with Github</button>
             </div>
         </form>
     )

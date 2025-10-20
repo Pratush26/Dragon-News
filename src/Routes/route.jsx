@@ -11,6 +11,7 @@ import AboutPage from "../Pages/About";
 import HomePage from "../Pages/Home";
 import Dashboard from "../Pages/Dashboard";
 import NotFoundPage from "../Pages/NotFound";
+import UsersRoute from "./UsersRoute";
 
 export const router = createBrowserRouter([
   {
@@ -42,7 +43,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/details',
-        Component: DetailsLayout,
+        element: <UsersRoute><DetailsLayout/></UsersRoute>
       },
       {
         path: '/career',
@@ -58,7 +59,7 @@ export const router = createBrowserRouter([
           },
           {
             path: '/career/dashboard',
-            Component: Dashboard
+            element: <UsersRoute><Dashboard/></UsersRoute>
           }
         ]
       },
