@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext";
 import { createUserWithEmailAndPassword, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
-import { auth } from "../Firebase/Firebase.config";
+import { auth } from "../Firebase/Firebase_temp.config";
 
 
 export default function AuthProvider({ children }) {
